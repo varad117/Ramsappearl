@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Admin Panel — UrbanThread</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- PASSWORD GATE (shown until correct password entered) -->
+<div class="login-page" id="loginGate">
+  <div class="login-card">
+    <div class="modal-header">
+      <span class="modal-icon">👕</span>
+      <h2>Admin Access</h2>
+      <p>Enter the password to manage products</p>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="gPassword" placeholder="••••••••"/>
+    </div>
+    <div class="error-msg" id="gError"></div>
+    <button class="btn-primary full-width" id="gLoginBtn">
+      Unlock Admin Panel
+    </button>
+    <p style="text-align:center;margin-top:20px;font-size:0.85rem;color:#999;">
+      <a href="index.html" style="color:var(--orange);">← Back to Website</a>
+    </p>
+  </div>
+</div>
+
+<!-- ADMIN PANEL (hidden until password correct) -->
+<div class="admin-layout hidden" id="adminPanel">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-header">
+      <div class="logo-text">👕 Urban<strong style="color:var(--orange)">Thread</strong></div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:4px;">Admin Panel</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" id="nav-dashboard" onclick="return showTab('dashboard')"><i class="fas fa-chart-pie"></i> Dashboard</a>
+      <a href="#" id="nav-add-product" onclick="return showTab('add-product')"><i class="fas fa-plus-circle"></i> Add Product</a>
+      <a href="#" id="nav-products" onclick="return showTab('products')"><i class="fas fa-box"></i> Manage Products</a>
+      <hr style="border-color:rgba(255,255,255,0.07);margin:12px 0;"/>
+      <a href="index.html"><i class="fas fa-globe"></i> View Website</a>
+      <a href="#" id="sideLogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="admin-main">
+    <header class="admin-header">
+      <h1 id="pageTitle">Dashboard</h1>
+      <div class="admin-user">
+        <div class="user-avatar">A</div>
+        <div>
+          <div style="font-size:0.875rem;font-weight:600;color:var(--dark)">Admin</div>
+          <div style="font-size:0.75rem;color:var(--text-light)">UrbanThread Manager</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="admin-content">
+
+      <!-- DASHBOARD TAB -->
+      <div id="tab-dashboard" class="tab-content">
+        <div class="admin-grid">
+          <div class="stat-card">
+            <div class="sc-icon"><i class="fas fa-tshirt"></i></div>
+            <div><div class="sc-num" id="totalProducts">—</div><div class="sc-label">Total Products</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon" style="background:#fff3e0;color:#e65100"><i class="fas fa-layer-group"></i></div>
+            <div><div class="sc-num" id="totalCategories">—</div><div class="sc-label">Categories</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon" style="background:#e8f5e9;color:#2e7d32"><i class="fas fa-star"></i></div>
+            <div><div class="sc-num">5.0</div><div class="sc-label">Quality Rating</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="sc-icon" style="background:#e3f2fd;color:#1565c0"><i class="fas fa-truck"></i></div>
+            <div><div class="sc-num">Pan-India</div><div class="sc-label">Delivery</div></div>
+          </div>
+        </div>
+
+        <!-- Recent Products Preview -->
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3>Recent Products</h3>
+            <button class="btn-primary" onclick="showTab('add-product')" style="padding:8px 18px;font-size:0.85rem;">+ Add New</button>
+          </div>
+          <div class="panel-body" style="padding:0;">
+            <table class="products-table" id="dashboardTable">
+              <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
+              <tbody id="dashboardTableBody">
+                <tr><td colspan="4" style="text-align:center;padding:32px;color:var(--text-light)">Loading products...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD PRODUCT TAB -->
+      <div id="tab-add-product" class="tab-content hidden">
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3 id="formTitle">Add New Product</h3>
+          </div>
+          <div class="panel-body">
+
+            <!-- Image Upload -->
+            <div class="upload-zone" id="uploadZone">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p><strong>Click to upload</strong> or drag and drop</p>
+              <p style="font-size:0.8rem;margin-top:6px;">JPG, PNG, WebP up to 5MB</p>
+              <input type="file" id="imgInput" accept="image/*" style="display:none"/>
+            </div>
+            <img id="previewImg" class="image-preview hidden" alt="Preview"/>
+            <div class="progress-bar hidden" id="uploadProgress">
+              <div class="progress-fill" id="progressFill" style="width:0%"></div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Product Name *</label>
+                <input type="text" id="pName" placeholder="e.g. Premium Cotton Polo T-Shirt"/>
+              </div>
+              <div class="form-group">
+                <label>Category *</label>
+                <select id="pCategory">
+                  <option value="">Select category</option>
+                  <option value="polo">Polo</option>
+                  <option value="round-neck">Round Neck</option>
+                  <option value="hoodies">Hoodies & Jackets</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Price (₹/piece)</label>
+                <input type="number" id="pPrice" placeholder="e.g. 350"/>
+              </div>
+              <div class="form-group">
+                <label>Min Order Quantity</label>
+                <input type="text" id="pStock" placeholder="e.g. 50 pieces"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Description *</label>
+              <textarea id="pDescription" rows="5" placeholder="Describe the product — fabric, fit, GSM, available sizes, printing/embroidery options..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Tags (comma-separated)</label>
+              <input type="text" id="pTags" placeholder="e.g. cotton, custom print, corporate uniform"/>
+            </div>
+
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button class="btn-primary" id="saveProductBtn">
+                <i class="fas fa-save"></i> <span id="saveBtnText">Save Product</span>
+                <span id="saveSpinner" class="spinner hidden"></span>
+              </button>
+              <button class="btn-outline" id="clearFormBtn" style="background:transparent;border-color:#ccc;color:var(--text);">
+                <i class="fas fa-times"></i> Clear Form
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANAGE PRODUCTS TAB -->
+      <div id="tab-products" class="tab-content hidden">
+        <div class="admin-panel">
+          <div class="panel-header">
+            <h3>All Products</h3>
+            <input type="text" id="searchProducts" placeholder="Search products..." style="padding:8px 14px;border:1.5px solid #eee;border-radius:50px;font-size:0.875rem;outline:none;"/>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="products-table" id="manageTable">
+              <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
+              <tbody id="manageTableBody">
+                <tr><td colspan="5" style="text-align:center;padding:32px;color:var(--text-light)">Loading products...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle" id="toastIcon"></i>
+  <span id="toastMsg">Saved successfully!</span>
+</div>
+
+<script>
+  // =====================================================================
+  // ADMIN PASSWORD — change this to whatever password you want.
+  // This is the ONLY login check for system.html (no Firebase Auth used).
+  // Anyone with this password and the system.html URL can manage products,
+  // so keep this password private and change the default before going live.
+  // =====================================================================
+  const ADMIN_PASSWORD = "urbanthread2025"; // <-- CHANGE THIS PASSWORD
+
+  const SESSION_KEY = 'ut_admin_session';
+
+  function checkSession() {
+    return sessionStorage.getItem(SESSION_KEY) === 'true';
+  }
+
+  function unlockPanel() {
+    document.getElementById('loginGate').classList.add('hidden');
+    document.getElementById('adminPanel').classList.remove('hidden');
+  }
+
+  if (checkSession()) {
+    unlockPanel();
+  }
+
+  document.getElementById('gLoginBtn').addEventListener('click', () => {
+    const entered = document.getElementById('gPassword').value;
+    const errEl = document.getElementById('gError');
+    if (entered === ADMIN_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, 'true');
+      errEl.textContent = '';
+      unlockPanel();
+      window.dispatchEvent(new Event('admin-unlocked'));
+    } else {
+      errEl.textContent = 'Incorrect password. Please try again.';
+    }
+  });
+
+  document.getElementById('gPassword').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('gLoginBtn').click();
+  });
+
+  document.getElementById('sideLogout').addEventListener('click', (e) => {
+    e.preventDefault();
+    sessionStorage.removeItem(SESSION_KEY);
+    location.reload();
+  });
+
+  // ===== TAB SWITCHING =====
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+    document.getElementById('tab-' + tabId).classList.remove('hidden');
+    document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+    const navEl = document.getElementById('nav-' + tabId);
+    if (navEl) navEl.classList.add('active');
+    const titles = { 'dashboard': 'Dashboard', 'add-product': 'Add Product', 'products': 'Manage Products' };
+    document.getElementById('pageTitle').textContent = titles[tabId] || tabId;
+    return false;
+  }
+  window.showTab = showTab;
+</script>
+
+<!-- Firebase SDK (Firestore + Storage only — no Firebase Auth) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+  // ===== PASTE YOUR FIREBASE CONFIG HERE (same config as index.html) =====
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+  // =========================================================================
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
+  let editingId = null;
+  let uploadedImageUrl = '';
+  let allProducts = [];
+
+  // Load products once panel unlocked (either already unlocked or via event)
+  if (sessionStorage.getItem('ut_admin_session') === 'true') {
+    loadProducts();
+  }
+  window.addEventListener('admin-unlocked', loadProducts);
+
+  // ===== IMAGE UPLOAD =====
+  const uploadZone = document.getElementById('uploadZone');
+  const imgInput = document.getElementById('imgInput');
+
+  uploadZone.addEventListener('click', () => imgInput.click());
+  uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+  uploadZone.addEventListener('drop', (e) => {
+    e.preventDefault(); uploadZone.classList.remove('dragover');
+    if (e.dataTransfer.files[0]) handleImageUpload(e.dataTransfer.files[0]);
+  });
+  imgInput.addEventListener('change', (e) => { if (e.target.files[0]) handleImageUpload(e.target.files[0]); });
+
+  async function handleImageUpload(file) {
+    if (!file.type.startsWith('image/')) { showToast('Please select an image file', 'error'); return; }
+    if (file.size > 5 * 1024 * 1024) { showToast('Image must be under 5MB', 'error'); return; }
+
+    const preview = document.getElementById('previewImg');
+    const reader = new FileReader();
+    reader.onload = (e) => { preview.src = e.target.result; preview.classList.remove('hidden'); };
+    reader.readAsDataURL(file);
+
+    const progressBar = document.getElementById('uploadProgress');
+    const progressFill = document.getElementById('progressFill');
+    progressBar.classList.remove('hidden');
+
+    const storageRef = ref(storage, `products/${Date.now()}_${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on('state_changed',
+      (snap) => {
+        const pct = (snap.bytesTransferred / snap.totalBytes) * 100;
+        progressFill.style.width = pct + '%';
+      },
+      (err) => { showToast('Upload failed: ' + err.message, 'error'); progressBar.classList.add('hidden'); },
+      async () => {
+        uploadedImageUrl = await getDownloadURL(uploadTask.snapshot.ref);
+        progressBar.classList.add('hidden');
+        showToast('Image uploaded successfully!', 'success');
+      }
+    );
+  }
+
+  // ===== SAVE PRODUCT =====
+  document.getElementById('saveProductBtn').addEventListener('click', async () => {
+    const name = document.getElementById('pName').value.trim();
+    const category = document.getElementById('pCategory').value;
+    const description = document.getElementById('pDescription').value.trim();
+    const price = document.getElementById('pPrice').value;
+    const stock = document.getElementById('pStock').value;
+    const tags = document.getElementById('pTags').value.split(',').map(t=>t.trim()).filter(Boolean);
+
+    if (!name) { showToast('Product name is required', 'error'); return; }
+    if (!category) { showToast('Please select a category', 'error'); return; }
+    if (!description) { showToast('Description is required', 'error'); return; }
+
+    const spinner = document.getElementById('saveSpinner');
+    const btnText = document.getElementById('saveBtnText');
+    spinner.classList.remove('hidden'); btnText.classList.add('hidden');
+
+    const data = { name, category, description, price: price || '', stock: stock || '', tags, imageUrl: uploadedImageUrl, updatedAt: serverTimestamp() };
+
+    try {
+      if (editingId) {
+        await updateDoc(doc(db, 'products', editingId), data);
+        showToast('Product updated successfully!', 'success');
+        editingId = null;
+        document.getElementById('formTitle').textContent = 'Add New Product';
+        document.getElementById('saveBtnText').textContent = 'Save Product';
+      } else {
+        data.createdAt = serverTimestamp();
+        await addDoc(collection(db, 'products'), data);
+        showToast('Product added successfully!', 'success');
+      }
+      clearForm();
+      await loadProducts();
+    } catch(e) {
+      showToast('Error saving product: ' + e.message, 'error');
+    } finally {
+      spinner.classList.add('hidden'); btnText.classList.remove('hidden');
+    }
+  });
+
+  // ===== CLEAR FORM =====
+  document.getElementById('clearFormBtn').addEventListener('click', () => {
+    clearForm();
+    editingId = null;
+    document.getElementById('formTitle').textContent = 'Add New Product';
+    document.getElementById('saveBtnText').textContent = 'Save Product';
+  });
+
+  function clearForm() {
+    ['pName','pDescription','pPrice','pStock','pTags'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('pCategory').value = '';
+    document.getElementById('previewImg').classList.add('hidden');
+    document.getElementById('previewImg').src = '';
+    document.getElementById('imgInput').value = '';
+    uploadedImageUrl = '';
+  }
+
+  // ===== LOAD PRODUCTS =====
+  async function loadProducts() {
+    try {
+      const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      allProducts = [];
+      snap.forEach(d => allProducts.push({ id: d.id, ...d.data() }));
+      renderDashboardTable(allProducts);
+      renderManageTable(allProducts);
+      document.getElementById('totalProducts').textContent = allProducts.length;
+      const cats = [...new Set(allProducts.map(p => p.category))].filter(Boolean);
+      document.getElementById('totalCategories').textContent = cats.length;
+    } catch(e) {
+      console.error(e);
+    }
+  }
+
+  function renderDashboardTable(products) {
+    const tbody = document.getElementById('dashboardTableBody');
+    if (!products.length) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:32px;color:var(--text-light)">No products yet. Add your first product!</td></tr>'; return; }
+    tbody.innerHTML = products.slice(0,5).map(p => `
+      <tr>
+        <td><div style="display:flex;align-items:center;gap:12px;">
+          <div class="table-img" style="${p.imageUrl ? `background-image:url('${p.imageUrl}');background-size:cover` : ''}">
+            ${!p.imageUrl ? '👕' : ''}
+          </div>
+          <span style="font-weight:500">${p.name}</span>
+        </div></td>
+        <td><span class="tag-badge">${(p.category || '—').replace('-', ' ')}</span></td>
+        <td>${p.price ? '₹' + p.price + '/pc' : '—'}</td>
+        <td>
+          <button class="btn-edit" onclick="window.editProduct('${p.id}')">Edit</button>
+          <button class="btn-delete" onclick="window.deleteProduct('${p.id}', '${p.imageUrl || ''}')">Delete</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  function renderManageTable(products) {
+    const tbody = document.getElementById('manageTableBody');
+    if (!products.length) { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--text-light)">No products found.</td></tr>'; return; }
+    tbody.innerHTML = products.map(p => `
+      <tr>
+        <td><div class="table-img" style="${p.imageUrl ? `background-image:url('${p.imageUrl}');background-size:cover;background-position:center` : ''}">
+          ${!p.imageUrl ? '👕' : ''}
+        </div></td>
+        <td style="font-weight:500;max-width:200px">${p.name}</td>
+        <td><span class="tag-badge">${(p.category || '—').replace('-', ' ')}</span></td>
+        <td>${p.price ? '₹' + p.price + '/pc' : '—'}</td>
+        <td>
+          <button class="btn-edit" onclick="window.editProduct('${p.id}')">Edit</button>
+          <button class="btn-delete" onclick="window.deleteProduct('${p.id}', '${p.imageUrl || ''}')">Delete</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  // ===== SEARCH =====
+  document.getElementById('searchProducts').addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    const filtered = allProducts.filter(p => p.name.toLowerCase().includes(q) || (p.category||'').includes(q));
+    renderManageTable(filtered);
+  });
+
+  // ===== EDIT PRODUCT =====
+  window.editProduct = async (id) => {
+    const product = allProducts.find(p => p.id === id);
+    if (!product) return;
+    editingId = id;
+    document.getElementById('pName').value = product.name || '';
+    document.getElementById('pCategory').value = product.category || '';
+    document.getElementById('pDescription').value = product.description || '';
+    document.getElementById('pPrice').value = product.price || '';
+    document.getElementById('pStock').value = product.stock || '';
+    document.getElementById('pTags').value = (product.tags || []).join(', ');
+    if (product.imageUrl) {
+      const preview = document.getElementById('previewImg');
+      preview.src = product.imageUrl; preview.classList.remove('hidden');
+      uploadedImageUrl = product.imageUrl;
+    }
+    document.getElementById('formTitle').textContent = 'Edit Product';
+    document.getElementById('saveBtnText').textContent = 'Update Product';
+    showTab('add-product');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // ===== DELETE PRODUCT =====
+  window.deleteProduct = async (id, imageUrl) => {
+    if (!confirm('Are you sure you want to delete this product? This cannot be undone.')) return;
+    try {
+      await deleteDoc(doc(db, 'products', id));
+      if (imageUrl) {
+        try {
+          const imgRef = ref(storage, imageUrl);
+          await deleteObject(imgRef);
+        } catch(e) { /* ignore if already deleted */ }
+      }
+      showToast('Product deleted', 'success');
+      await loadProducts();
+    } catch(e) {
+      showToast('Error deleting: ' + e.message, 'error');
+    }
+  };
+
+  // ===== TOAST =====
+  function showToast(msg, type = 'success') {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    const toastIcon = document.getElementById('toastIcon');
+    toastMsg.textContent = msg;
+    toast.className = 'toast ' + type;
+    toastIcon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
+  }
+  window.showToast = showToast;
+</script>
+</body>
+</html>

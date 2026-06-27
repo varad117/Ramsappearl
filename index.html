@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>UrbanThread — Premium T-Shirt Manufacturers</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">👕</span>
+      <span class="logo-text">Urban<strong>Thread</strong></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li class="nav-auth">
+        <a href="https://wa.me/919876543210" target="_blank" class="btn-nav-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Bulk & Custom Orders Welcome</span>
+    <h1>India's Leading<br/><em>T-Shirt Manufacturers</em></h1>
+    <p>Custom printing, embroidery, and cut-and-sew manufacturing for corporates, brands, and events. Polo, round neck, hoodies & jackets — made to your spec.</p>
+    <div class="hero-cta">
+      <a href="#products" class="btn-primary">Explore Products</a>
+      <a href="https://wa.me/919876543210" target="_blank" class="btn-outline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Years in Business</span></div>
+      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Corporate Clients</span></div>
+      <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Units Shipped</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section" id="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Our Range</span>
+      <h2>Let Our Work Speak</h2>
+      <p>Premium fabric, sharp stitching, and finishing that holds up — order a sample to see for yourself.</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn" data-filter="polo">Polo</button>
+      <button class="filter-btn" data-filter="round-neck">Round Neck</button>
+      <button class="filter-btn" data-filter="hoodies">Hoodies & Jackets</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <div class="loading-products">
+        <div class="loader"></div>
+        <p>Loading products...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section" id="about">
+  <div class="container about-grid">
+    <div class="about-img-stack">
+      <div class="about-img-main" style="background:linear-gradient(135deg,#2a2a2a,#000);">
+        <span style="font-size:6rem;">👕</span>
+      </div>
+      <div class="about-badge"><strong>100+</strong> Brands Trust Us</div>
+    </div>
+    <div class="about-content">
+      <span class="eyebrow">About Us</span>
+      <h2>Premium T-Shirts, Made With Precision</h2>
+      <p>We are one of India's leading t-shirt manufacturers, trusted by corporates and brands for custom apparel. From screen printing and embroidery to full cut-and-sew production, we handle it all in-house.</p>
+      <p>Every order goes through strict quality checks before dispatch. We work with clients across retail, hospitality, and corporate sectors — delivering on time, every time.</p>
+      <div class="about-features">
+        <div class="feature"><i class="fas fa-tshirt"></i><span>In-house manufacturing</span></div>
+        <div class="feature"><i class="fas fa-award"></i><span>Premium fabric quality</span></div>
+        <div class="feature"><i class="fas fa-truck"></i><span>Pan-India delivery</span></div>
+        <div class="feature"><i class="fas fa-pen-nib"></i><span>Custom design support</span></div>
+      </div>
+      <a href="https://wa.me/919876543210" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Get a Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS MARQUEE -->
+<section class="clients-section">
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span>PPG Asian Paints</span><span>•</span>
+      <span>Parag Milk Foods</span><span>•</span>
+      <span>Maersk</span><span>•</span>
+      <span>Hinduja Group</span><span>•</span>
+      <span>Reliance</span><span>•</span>
+      <span>Taj Hotels</span><span>•</span>
+      <span>ITC Hotels</span><span>•</span>
+      <span>DMart</span><span>•</span>
+      <span>PPG Asian Paints</span><span>•</span>
+      <span>Parag Milk Foods</span><span>•</span>
+      <span>Maersk</span><span>•</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Request a Quote</h2>
+      <p>Send us your requirements on WhatsApp and we'll get back to you within minutes.</p>
+      <div class="contact-details">
+        <div class="cd-item"><i class="fas fa-phone"></i><div><strong>Call Us</strong><span>+91 98765 43210</span></div></div>
+        <div class="cd-item"><i class="fab fa-whatsapp"></i><div><strong>WhatsApp</strong><span>+91 98765 43210</span></div></div>
+        <div class="cd-item"><i class="fas fa-map-marker-alt"></i><div><strong>Location</strong><span>Mumbai, India</span></div></div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="form-group"><label>Full Name</label><input type="text" id="cfName" placeholder="Your Name" required/></div>
+        <div class="form-group"><label>Phone</label><input type="tel" id="cfPhone" placeholder="+91 XXXXX XXXXX" required/></div>
+      </div>
+      <div class="form-group"><label>Product Interest</label>
+        <select id="cfProduct">
+          <option value="">Select a product...</option>
+          <option>Polo T-Shirt</option>
+          <option>Round Neck T-Shirt</option>
+          <option>Hoodie</option>
+          <option>Jacket</option>
+          <option>Custom Order</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message</label><textarea id="cfMessage" placeholder="Tell us about your requirement (quantity, sizes, design)..." rows="4"></textarea></div>
+      <button type="submit" class="btn-primary full-width"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="logo-text">👕 Urban<strong>Thread</strong></span>
+      <p>Premium t-shirt manufacturers delivering quality apparel across India.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#products">Polo T-Shirts</a></li>
+        <li><a href="#products">Round Neck</a></li>
+        <li><a href="#products">Hoodies</a></li>
+        <li><a href="#products">Jackets</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Bulk Orders</a></li>
+        <li><a href="#">Custom Design</a></li>
+      </ul>
+    </div>
+    <div class="footer-newsletter">
+      <h4>Get Updates</h4>
+      <p>Subscribe for new arrivals and offers.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email"/>
+        <button class="btn-primary">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 UrbanThread India. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ORDER MODAL: Enter Name -> WhatsApp -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <button class="modal-close" id="orderModalClose"><i class="fas fa-times"></i></button>
+    <div class="modal-header">
+      <span class="modal-icon">💬</span>
+      <h2>Quick Order</h2>
+      <p id="orderProductLabel">Enter your name to continue on WhatsApp</p>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="orderName" placeholder="e.g. Rahul Sharma"/>
+      </div>
+      <div class="form-group">
+        <label>Quantity (optional)</label>
+        <input type="text" id="orderQty" placeholder="e.g. 50 pieces"/>
+      </div>
+      <div class="error-msg" id="orderError"></div>
+      <button class="btn-primary full-width" id="orderSubmit"><i class="fab fa-whatsapp"></i> Continue to WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal product-modal">
+    <button class="modal-close" id="productModalClose"><i class="fas fa-times"></i></button>
+    <div id="productModalContent"></div>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // ===== PASTE YOUR FIREBASE CONFIG HERE =====
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+  // ============================================
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ===== WHATSAPP NUMBER (change this to your real number, country code + number, no + or spaces) =====
+  window.WHATSAPP_NUMBER = "919876543210"; // <-- SAMPLE NUMBER, REPLACE WITH YOURS
+
+  // Load Products
+  async function loadProducts() {
+    const grid = document.getElementById('productsGrid');
+    try {
+      const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        grid.innerHTML = `<div class="no-products"><p>👕 Products coming soon! Check back later.</p></div>`;
+        return;
+      }
+      const products = [];
+      snap.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+      window.allProductsData = products;
+      renderProducts(products);
+    } catch (e) {
+      grid.innerHTML = `<div class="no-products"><p>⚠️ Could not load products. Please configure Firebase.</p></div>`;
+    }
+  }
+
+  function renderProducts(products) {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = '';
+    products.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.dataset.category = p.category || 'all';
+      card.innerHTML = `
+        <div class="product-img" style="background-image:url('${p.imageUrl || ''}')">
+          ${!p.imageUrl ? '<span class="product-placeholder">👕</span>' : ''}
+          <span class="product-tag">${(p.category || 'tshirt').replace('-', ' ')}</span>
+        </div>
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p>${p.description ? p.description.substring(0,80) + '...' : ''}</p>
+          <div class="product-footer">
+            <span class="product-price">${p.price ? '₹' + p.price + '/pc' : 'Get Quote'}</span>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-view" onclick='openProductModal(${JSON.stringify(p)})'>View</button>
+              <button class="btn-view" style="background:#25D366" onclick='openOrderModal(${JSON.stringify(p.name)})'><i class="fab fa-whatsapp"></i></button>
+            </div>
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    setupFilters();
+  }
+
+  window.openProductModal = function(p) {
+    const content = document.getElementById('productModalContent');
+    content.innerHTML = `
+      <div class="pm-img" style="background-image:url('${p.imageUrl || ''}')">
+        ${!p.imageUrl ? '<span style="font-size:5rem">👕</span>' : ''}
+      </div>
+      <div class="pm-details">
+        <span class="product-tag">${(p.category || 'tshirt').replace('-', ' ')}</span>
+        <h2>${p.name}</h2>
+        <p>${p.description || ''}</p>
+        ${p.price ? `<div class="pm-price">₹${p.price} <span>/piece</span></div>` : ''}
+        <button class="btn-primary" onclick='document.getElementById("productModal").classList.remove("active"); openOrderModal(${JSON.stringify(p.name)})'><i class="fab fa-whatsapp"></i> Order This on WhatsApp</button>
+      </div>`;
+    document.getElementById('productModal').classList.add('active');
+  };
+
+  loadProducts();
+</script>
+<script src="main.js"></script>
+</body>
+</html>
