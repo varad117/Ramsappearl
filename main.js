@@ -5,23 +5,38 @@ window.addEventListener('scroll', () => {
   else navbar.classList.remove('scrolled');
 });
 
-// ===== HAMBURGER =====
+// ===== HAMBURGER DRAWER =====
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
+
+function openDrawer() {
+  navLinks.classList.add('open');
+  hamburger.classList.add('open');
+  navOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  navLinks.classList.remove('open');
+  hamburger.classList.remove('open');
+  navOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
 if (hamburger) {
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open');
+    navLinks.classList.contains('open') ? closeDrawer() : openDrawer();
   });
 }
 
-// Close nav on link click
+// Close when clicking the dark overlay
+if (navOverlay) navOverlay.addEventListener('click', closeDrawer);
+
+// Close on any nav link click
 document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger && hamburger.classList.remove('open');
-  });
-});
+  link.addEventListener('click', closeDrawer);
+});;
 
 // ===== PRODUCT MODAL CLOSE =====
 const productModal = document.getElementById('productModal');
