@@ -241,8 +241,7 @@
   import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc, query, orderBy, serverTimestamp }
                                from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject }
-                               from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
 
   const firebaseConfig = {
     apiKey: "AIzaSyBXARIfzQocRpatW6lKsnDjRKeDLQh0qtA",
@@ -255,9 +254,11 @@
 
   const app     = initializeApp(firebaseConfig);
   const db      = getFirestore(app);
-  const storage = getStorage(app);
+  
 
-  let editingId = null, uploadedImageUrl = '', allProducts = [];
+  let editingId = null,
+uploadedImage = '',
+allProducts = [];
 
   // Load after unlock
   if (sessionStorage.getItem('rams_admin_sess') === '1') loadProducts();
@@ -271,26 +272,35 @@
   zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
   zone.addEventListener('drop',      e => { e.preventDefault(); zone.classList.remove('dragover'); if(e.dataTransfer.files[0]) handleImg(e.dataTransfer.files[0]); });
   imgInput.addEventListener('change', e => { if(e.target.files[0]) handleImg(e.target.files[0]); });
+async function handleImg(file) {
 
-  async function handleImg(file) {
-    if (!file.type.startsWith('image/')) { toast('Please upload an image file','error'); return; }
-    if (file.size > 5*1024*1024)         { toast('Image must be under 5MB','error');     return; }
-    const prev = document.getElementById('previewImg');
-    const reader = new FileReader();
-    reader.onload = e => { prev.src=e.target.result; prev.classList.remove('hidden'); };
-    reader.readAsDataURL(file);
-    const prog = document.getElementById('uploadProgress');
-    const fill = document.getElementById('progressFill');
-    prog.classList.remove('hidden');
-    const storageRef = ref(storage, 'products/'+Date.now()+'_'+file.name);
-    const task = uploadBytesResumable(storageRef, file);
-    task.on('state_changed',
-      s => { fill.style.width = (s.bytesTransferred/s.totalBytes*100)+'%'; },
-      e => { toast('Upload failed: '+e.message,'error'); prog.classList.add('hidden'); },
-      async () => { uploadedImageUrl = await getDownloadURL(task.snapshot.ref); prog.classList.add('hidden'); toast('Image uploaded!','success'); }
-    );
+  if (!file.type.startsWith("image/")) {
+    toast("Please upload an image", "error");
+    return;
   }
 
+  if (file.size > 5 * 1024 * 1024) {
+    toast("Image must be under 5MB", "error");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+
+      uploadedImage = e.target.result;
+
+      const prev = document.getElementById("previewImg");
+      prev.src = uploadedImage;
+      prev.classList.remove("hidden");
+
+      toast("Image Ready","success");
+
+  }
+
+  reader.readAsDataURL(file);
+
+}
   // ── SAVE PRODUCT ─────────────────────────────────────────
   document.getElementById('saveProductBtn').addEventListener('click', async () => {
     const name = document.getElementById('pName').value.trim();
@@ -307,7 +317,7 @@
       price: document.getElementById('pPrice').value||'',
       stock: document.getElementById('pStock').value||'',
       gsm:   document.getElementById('pGSM').value||'',
-      imageUrl: uploadedImageUrl,
+      image: uploadedImage,
       updatedAt: serverTimestamp()
     };
     try {
@@ -336,7 +346,7 @@
     document.getElementById('previewImg').classList.add('hidden');
     document.getElementById('previewImg').src='';
     document.getElementById('imgInput').value='';
-    uploadedImageUrl='';
+    uploadedImage='';
   }
 
   // ── LOAD & RENDER ────────────────────────────────────────
@@ -359,12 +369,12 @@
     if (!list.length) { tbody.innerHTML='<tr><td colspan="4" style="text-align:center;padding:28px;color:#bbb;">No products yet.</td></tr>'; return; }
     tbody.innerHTML = list.map(p=>`<tr>
       <td><div style="display:flex;align-items:center;gap:11px;">
-        <div class="table-img" style="${p.imageUrl?`background-image:url('${p.imageUrl}');background-size:cover;background-position:center`:''}">${!p.imageUrl?'👕':''}</div>
+        <div class="table-img" style="${p.image?`background-image:url('${p.image}');background-size:cover;background-position:center`:''}">${!p.image?'👕':''}</div>
         <span style="font-weight:500">${p.name}</span></div></td>
       <td><span class="tag-badge">${(p.category||'—').replace('-',' ')}</span></td>
       <td>${p.price?'₹'+p.price+'/pc':'—'}</td>
       <td><button class="btn-edit" onclick="window.editProduct('${p.id}')">Edit</button>
-          <button class="btn-delete" onclick="window.deleteProduct('${p.id}','${p.imageUrl||''}')">Delete</button></td>
+          <button class="btn-delete" onclick="window.deleteProduct('${p.id}','${p.image||''}')">Delete</button></td>
     </tr>`).join('');
   }
 
@@ -372,12 +382,12 @@
     const tbody = document.getElementById('manageTableBody');
     if (!list.length) { tbody.innerHTML='<tr><td colspan="5" style="text-align:center;padding:28px;color:#bbb;">No products found.</td></tr>'; return; }
     tbody.innerHTML = list.map(p=>`<tr>
-      <td><div class="table-img" style="${p.imageUrl?`background-image:url('${p.imageUrl}');background-size:cover;background-position:center`:''}">${!p.imageUrl?'👕':''}</div></td>
+      <td><div class="table-img" style="${p.image?`background-image:url('${p.image}');background-size:cover;background-position:center`:''}">${!p.image?'👕':''}</div></td>
       <td style="font-weight:500;max-width:200px">${p.name}</td>
       <td><span class="tag-badge">${(p.category||'—').replace('-',' ')}</span></td>
       <td>${p.price?'₹'+p.price+'/pc':'—'}</td>
       <td><button class="btn-edit" onclick="window.editProduct('${p.id}')">Edit</button>
-          <button class="btn-delete" onclick="window.deleteProduct('${p.id}','${p.imageUrl||''}')">Delete</button></td>
+          <button class="btn-delete" onclick="window.deleteProduct('${p.id}','${p.image||''}')">Delete</button></td>
     </tr>`).join('');
   }
 
@@ -395,7 +405,17 @@
     document.getElementById('pPrice').value       = p.price||'';
     document.getElementById('pStock').value       = p.stock||'';
     document.getElementById('pGSM').value         = p.gsm||'';
-    if (p.imageUrl) { const prev=document.getElementById('previewImg'); prev.src=p.imageUrl; prev.classList.remove('hidden'); uploadedImageUrl=p.imageUrl; }
+if (p.image) {
+
+    const prev=document.getElementById('previewImg');
+
+    prev.src=p.image;
+
+    prev.classList.remove('hidden');
+
+    uploadedImage=p.image;
+
+}
     document.getElementById('formTitle').textContent='Edit Product';
     document.getElementById('saveBtnText').textContent='Update Product';
     showTab('add-product');
@@ -406,7 +426,7 @@
     if (!confirm('Delete this product? This cannot be undone.')) return;
     try {
       await deleteDoc(doc(db,'products',id));
-      if (imgUrl) { try { await deleteObject(ref(storage,imgUrl)); } catch(_){} }
+
       toast('Product deleted','success');
       await loadProducts();
     } catch(e) { toast('Error: '+e.message,'error'); }
