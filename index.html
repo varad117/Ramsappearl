@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>UrbanThread — Premium T-Shirt Manufacturers</title>
+<title>Rams Apparel — Your Style Your Signature</title>
 <link rel="stylesheet" href="style.css"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
@@ -14,171 +14,268 @@
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">
-      <span class="logo-icon">👕</span>
-      <span class="logo-text">Urban<strong>Thread</strong></span>
+      <div class="logo-mark">MR<sub>s</sub></div>
+      <div class="logo-text-wrap">
+        <span class="logo-name">Rams Apparel</span>
+        <span class="logo-tagline">Your Style Your Signature</span>
+      </div>
     </a>
+
     <ul class="nav-links-desktop">
       <li><a href="#home">Home</a></li>
       <li><a href="#products">Products</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
-        <a href="https://wa.me/919876543210" target="_blank" class="btn-nav-whatsapp">
-          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        <a href="https://wa.me/918830519947" target="_blank" class="btn-nav-whatsapp">
+          <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
       </li>
+      <li id="navLoginLi">
+        <button class="btn-nav-login" id="navLoginBtn"><i class="fas fa-user"></i> Login</button>
+      </li>
+      <li id="navUserLi" class="hidden">
+        <div class="nav-user-pill">
+          <div class="nav-avatar" id="navAvatar">U</div>
+          <span id="navUserName">User</span>
+          <button class="nav-logout-btn" id="navLogoutBtn" title="Logout"><i class="fas fa-right-from-bracket"></i></button>
+        </div>
+      </li>
     </ul>
+
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- MOBILE OVERLAY -->
+<!-- OVERLAY -->
 <div class="nav-overlay" id="navOverlay"></div>
 
 <!-- MOBILE DRAWER -->
 <div class="nav-drawer" id="navDrawer">
   <div class="drawer-header">
-    <span class="logo-text" style="font-size:1.3rem;">👕 Urban<strong>Thread</strong></span>
+    <div class="logo-mark" style="font-size:1rem;width:36px;height:36px;">MR<sub>s</sub></div>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;font-weight:600;">Rams Apparel</span>
     <button class="drawer-close" id="drawerClose"><i class="fas fa-xmark"></i></button>
   </div>
   <ul class="drawer-links">
-    <li><a href="#home" class="drawer-link"><span class="dl-icon"><i class="fas fa-house"></i></span><span class="dl-label">Home</span><i class="fas fa-chevron-right dl-arrow"></i></a></li>
+    <li><a href="#home"     class="drawer-link"><span class="dl-icon"><i class="fas fa-house"></i></span><span class="dl-label">Home</span><i class="fas fa-chevron-right dl-arrow"></i></a></li>
     <li><a href="#products" class="drawer-link"><span class="dl-icon"><i class="fas fa-tshirt"></i></span><span class="dl-label">Products</span><i class="fas fa-chevron-right dl-arrow"></i></a></li>
-    <li><a href="#about" class="drawer-link"><span class="dl-icon"><i class="fas fa-circle-info"></i></span><span class="dl-label">About</span><i class="fas fa-chevron-right dl-arrow"></i></a></li>
-    <li><a href="#contact" class="drawer-link"><span class="dl-icon"><i class="fas fa-envelope"></i></span><span class="dl-label">Contact</span><i class="fas fa-chevron-right dl-arrow"></i></a></li>
+    <li><a href="#about"    class="drawer-link"><span class="dl-icon"><i class="fas fa-circle-info"></i></span><span class="dl-label">About</span><i class="fas fa-chevron-right dl-arrow"></i></a></li>
+    <li><a href="#contact"  class="drawer-link"><span class="dl-icon"><i class="fas fa-envelope"></i></span><span class="dl-label">Contact</span><i class="fas fa-chevron-right dl-arrow"></i></a></li>
   </ul>
   <div class="drawer-divider"></div>
-  <a href="https://wa.me/919876543210" target="_blank" class="drawer-whatsapp">
+  <a href="https://wa.me/918830519947" target="_blank" class="drawer-whatsapp">
     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
   </a>
+  <div class="drawer-divider"></div>
+  <div class="drawer-auth" id="drawerAuthGuest">
+    <button class="drawer-auth-btn" id="drawerLoginBtn"><i class="fas fa-user"></i> Login / Sign Up</button>
+  </div>
+  <div class="drawer-auth hidden" id="drawerAuthUser">
+    <div class="drawer-user-info">
+      <div class="nav-avatar" id="drawerAvatar">U</div>
+      <div>
+        <div class="drawer-user-name" id="drawerUserName">User</div>
+        <div class="drawer-user-email" id="drawerUserEmail"></div>
+      </div>
+    </div>
+    <button class="drawer-logout-btn" id="drawerLogoutBtn"><i class="fas fa-right-from-bracket"></i> Logout</button>
+  </div>
   <div class="drawer-footer">
-    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-    <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
+    <p><i class="fas fa-phone"></i> +91 88305 19947</p>
+    <p><i class="fas fa-map-marker-alt"></i> Virar (West), Mumbai</p>
   </div>
 </div>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow">Bulk & Custom Orders Welcome</span>
-    <h1>India's Leading<br/><em>T-Shirt Manufacturers</em></h1>
-    <p>Custom printing, embroidery, and cut-and-sew manufacturing for corporates, brands, and events. Polo, round neck, hoodies & jackets — made to your spec.</p>
+    <span class="hero-eyebrow">Premium Apparel Manufacturer — Mumbai</span>
+    <h1>Your Style<br/><em>Your Signature</em></h1>
+    <p>Custom t-shirts, polo shirts, hoodies, and more — crafted in 100% cotton with DTF, vinyl, and screen printing. Bulk &amp; corporate orders welcome.</p>
     <div class="hero-cta">
-      <a href="#products" class="btn-primary">Explore Products</a>
-      <a href="https://wa.me/919876543210" target="_blank" class="btn-outline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <a href="#products" class="btn-primary">View Catalogue</a>
+      <a href="https://wa.me/918830519947" target="_blank" class="btn-outline"><i class="fab fa-whatsapp"></i> Get a Quote</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Years in Business</span></div>
-      <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Corporate Clients</span></div>
-      <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Units Shipped</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Cotton Quality</span></div>
+      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Print Methods</span></div>
+      <div class="stat"><span class="stat-num">S–4XL</span><span class="stat-label">Sizes Available</span></div>
     </div>
   </div>
   <div class="hero-scroll"><span></span></div>
 </section>
 
-<!-- PRODUCTS SECTION -->
+<!-- PRODUCTS -->
 <section class="products-section" id="products">
   <div class="container">
     <div class="section-header">
-      <span class="eyebrow">Our Range</span>
-      <h2>Let Our Work Speak</h2>
-      <p>Premium fabric, sharp stitching, and finishing that holds up — order a sample to see for yourself.</p>
+      <span class="eyebrow">Our Catalogue</span>
+      <h2>Premium Apparel Range</h2>
+      <p>Every piece is 100% cotton, available in multiple GSM options, and customisable with your design.</p>
     </div>
-
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">All Products</button>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="mens">Men's</button>
+      <button class="filter-btn" data-filter="womens">Women's</button>
+      <button class="filter-btn" data-filter="kids">Kids</button>
       <button class="filter-btn" data-filter="polo">Polo</button>
-      <button class="filter-btn" data-filter="round-neck">Round Neck</button>
-      <button class="filter-btn" data-filter="hoodies">Hoodies & Jackets</button>
+      <button class="filter-btn" data-filter="hoodies">Hoodies</button>
     </div>
-
     <div class="products-grid" id="productsGrid">
-      <div class="loading-products">
-        <div class="loader"></div>
-        <p>Loading products...</p>
-      </div>
+      <div class="loading-products"><div class="loader"></div><p>Loading products...</p></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT SECTION -->
+<!-- WHY US -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Why Rams Apparel</span>
+      <h2>Quality You Can Feel</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><i class="fas fa-certificate"></i></div><h3>100% Cotton</h3><p>Premium cotton fabric across all products — breathable, durable, and comfortable.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-palette"></i></div><h3>3 Print Methods</h3><p>DTF Printing, Vinyl Based, and Screen Based — we match the method to your design.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-ruler-combined"></i></div><h3>S to 4XL Sizes</h3><p>Full size range for men, women, and kids — with detailed size charts for every product.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-truck-fast"></i></div><h3>Bulk Orders</h3><p>Corporate uniforms, event merch, team apparel — we handle large orders with ease.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="container about-grid">
-    <div class="about-img-stack">
-      <div class="about-img-main" style="background:linear-gradient(135deg,#2a2a2a,#000);">
-        <span style="font-size:6rem;">👕</span>
+    <div class="about-img-wrap">
+      <div class="about-img-box">
+        <div class="about-pattern"></div>
+        <div class="about-img-inner">
+          <div class="logo-mark large-mark">MR<sub>s</sub></div>
+          <p>Since 2010</p>
+        </div>
       </div>
-      <div class="about-badge"><strong>100+</strong> Brands Trust Us</div>
+      <div class="about-badge"><strong>Mumbai</strong>Based Manufacturer</div>
     </div>
     <div class="about-content">
       <span class="eyebrow">About Us</span>
-      <h2>Premium T-Shirts, Made With Precision</h2>
-      <p>We are one of India's leading t-shirt manufacturers, trusted by corporates and brands for custom apparel. From screen printing and embroidery to full cut-and-sew production, we handle it all in-house.</p>
-      <p>Every order goes through strict quality checks before dispatch. We work with clients across retail, hospitality, and corporate sectors — delivering on time, every time.</p>
+      <h2>Crafting Premium Apparel Since 2010</h2>
+      <p>Rams Apparel is a Mumbai-based premium apparel manufacturer specialising in custom-printed t-shirts, polo shirts, hoodies, and more. We serve corporates, brands, event organisers, and retailers across India.</p>
+      <p>With in-house printing facilities supporting DTF, Vinyl, and Screen Based methods, we deliver consistent quality at scale — from 50 pieces to 50,000.</p>
       <div class="about-features">
-        <div class="feature"><i class="fas fa-tshirt"></i><span>In-house manufacturing</span></div>
-        <div class="feature"><i class="fas fa-award"></i><span>Premium fabric quality</span></div>
-        <div class="feature"><i class="fas fa-truck"></i><span>Pan-India delivery</span></div>
-        <div class="feature"><i class="fas fa-pen-nib"></i><span>Custom design support</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>In-house printing facility</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Bulk &amp; custom orders</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Pan-India delivery</span></div>
+        <div class="feature"><i class="fas fa-check-circle"></i><span>Corporate &amp; event specialists</span></div>
       </div>
-      <a href="https://wa.me/919876543210" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Get a Quote</a>
+      <a href="https://wa.me/918830519947" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> Contact Us</a>
     </div>
   </div>
 </section>
 
-<!-- CLIENTS MARQUEE -->
+<!-- MARQUEE -->
 <section class="clients-section">
   <div class="marquee-wrapper">
     <div class="marquee-track">
-      <span>PPG Asian Paints</span><span>•</span>
-      <span>Parag Milk Foods</span><span>•</span>
-      <span>Maersk</span><span>•</span>
-      <span>Hinduja Group</span><span>•</span>
-      <span>Reliance</span><span>•</span>
-      <span>Taj Hotels</span><span>•</span>
-      <span>ITC Hotels</span><span>•</span>
-      <span>DMart</span><span>•</span>
-      <span>PPG Asian Paints</span><span>•</span>
-      <span>Parag Milk Foods</span><span>•</span>
-      <span>Maersk</span><span>•</span>
+      <span>DTF Printing</span><span>✦</span>
+      <span>Vinyl Based Printing</span><span>✦</span>
+      <span>Screen Printing</span><span>✦</span>
+      <span>Bulk Orders</span><span>✦</span>
+      <span>100% Cotton</span><span>✦</span>
+      <span>Corporate Uniforms</span><span>✦</span>
+      <span>Custom Design</span><span>✦</span>
+      <span>Pan-India Delivery</span><span>✦</span>
+      <span>DTF Printing</span><span>✦</span>
+      <span>Vinyl Based Printing</span><span>✦</span>
+      <span>Screen Printing</span><span>✦</span>
     </div>
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
+<!-- CONTACT -->
 <section class="contact-section" id="contact">
-  <div class="container contact-grid">
-    <div class="contact-info">
-      <span class="eyebrow">Get In Touch</span>
-      <h2>Request a Quote</h2>
-      <p>Send us your requirements on WhatsApp and we'll get back to you within minutes.</p>
-      <div class="contact-details">
-        <div class="cd-item"><i class="fas fa-phone"></i><div><strong>Call Us</strong><span>+91 98765 43210</span></div></div>
-        <div class="cd-item"><i class="fab fa-whatsapp"></i><div><strong>WhatsApp</strong><span>+91 98765 43210</span></div></div>
-        <div class="cd-item"><i class="fas fa-map-marker-alt"></i><div><strong>Location</strong><span>Mumbai, India</span></div></div>
+  <div class="container">
+
+    <!-- Top row: info + form -->
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Request a Quote</h2>
+        <p>Send your requirements on WhatsApp and we'll get back to you within minutes.</p>
+        <div class="contact-details">
+          <div class="cd-item"><i class="fas fa-phone"></i><div><strong>Call / WhatsApp</strong><span>+91 88305 19947</span></div></div>
+          <div class="cd-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><span>info@ramsapparel.co.in</span></div></div>
+          <!-- Address now clickable → opens Google Maps -->
+          <a class="cd-item cd-item-link" href="https://www.google.com/maps/place/Sun+Heights+Vinay+Unique/@19.4666649,72.7962376,17z" target="_blank" rel="noopener">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Address <span class="map-chip"><i class="fas fa-arrow-up-right-from-square"></i> Open in Maps</span></strong>
+              <span>Unit No.1, Sun Heights, Global City, Virar (West), Mumbai – 401303</span>
+            </div>
+          </a>
+        </div>
       </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" id="cfName" placeholder="Your Name" required/></div>
+          <div class="form-group"><label>Phone</label><input type="tel" id="cfPhone" placeholder="+91 XXXXX XXXXX" required/></div>
+        </div>
+        <div class="form-group"><label>Product Interest</label>
+          <select id="cfProduct">
+            <option value="">Select a product...</option>
+            <option>Men's Round Neck T-Shirt</option>
+            <option>Women's Round Neck T-Shirt</option>
+            <option>Oversized T-Shirt</option>
+            <option>Polo T-Shirt</option>
+            <option>Double Tipping Polo</option>
+            <option>Tipping Polo</option>
+            <option>Women's Crop Top</option>
+            <option>Women's T-Shirt Dress</option>
+            <option>Kids T-Shirt</option>
+            <option>Zipper Hoodie</option>
+            <option>Kids Pullover Hoodie</option>
+            <option>Custom / Bulk Order</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea id="cfMessage" placeholder="Quantity, sizes, colour requirements, design details..." rows="4"></textarea></div>
+        <button type="submit" class="btn-primary full-width"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+      </form>
     </div>
-    <form class="contact-form" id="contactForm">
-      <div class="form-row">
-        <div class="form-group"><label>Full Name</label><input type="text" id="cfName" placeholder="Your Name" required/></div>
-        <div class="form-group"><label>Phone</label><input type="tel" id="cfPhone" placeholder="+91 XXXXX XXXXX" required/></div>
+
+    <!-- Map row — full width, interactive, click opens Google Maps -->
+    <div class="map-section">
+      <div class="map-label">
+        <i class="fas fa-location-dot"></i>
+        <span>Rams Apparel — Virar (West), Mumbai</span>
+        <a href="https://www.google.com/maps/place/Sun+Heights+Vinay+Unique/@19.4666649,72.7962376,17z" target="_blank" rel="noopener" class="map-open-btn">
+          <i class="fas fa-diamond-turn-right"></i> Get Directions
+        </a>
       </div>
-      <div class="form-group"><label>Product Interest</label>
-        <select id="cfProduct">
-          <option value="">Select a product...</option>
-          <option>Polo T-Shirt</option>
-          <option>Round Neck T-Shirt</option>
-          <option>Hoodie</option>
-          <option>Jacket</option>
-          <option>Custom Order</option>
-        </select>
+      <!-- Google Maps embed — interactive, pannable, zoomable, click opens full Google Maps -->
+      <div class="map-frame-wrap">
+        <iframe
+          class="map-frame"
+          src="https://maps.google.com/maps?q=19.4666649,72.7962376&z=16&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <!-- Invisible overlay: single click opens Google Maps, but lets iframe interactions through after first click -->
+        <a class="map-overlay-link"
+           href="https://www.google.com/maps/place/Sun+Heights+Vinay+Unique/@19.4666649,72.7962376,17z"
+           target="_blank" rel="noopener" aria-label="Open in Google Maps">
+          <div class="map-overlay-badge">
+            <i class="fas fa-arrow-up-right-from-square"></i> Open in Google Maps
+          </div>
+        </a>
       </div>
-      <div class="form-group"><label>Message</label><textarea id="cfMessage" placeholder="Tell us about your requirement (quantity, sizes, design)..." rows="4"></textarea></div>
-      <button type="submit" class="btn-primary full-width"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
-    </form>
+      <div class="map-click-hint"><i class="fas fa-hand-pointer"></i> Drag &amp; zoom freely — click the badge to open full Google Maps</div>
+    </div>
+
   </div>
 </section>
 
@@ -186,22 +283,25 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <span class="logo-text">👕 Urban<strong>Thread</strong></span>
-      <p>Premium t-shirt manufacturers delivering quality apparel across India.</p>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div class="logo-mark" style="font-size:0.7rem;width:32px;height:32px;">MR<sub>s</sub></div>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;font-weight:600;">Rams Apparel</span>
+      </div>
+      <p>Your Style Your Signature. Premium apparel manufacturer based in Mumbai, India.</p>
       <div class="social-links">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/918830519947" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <div class="footer-links">
       <h4>Products</h4>
       <ul>
+        <li><a href="#products">Men's T-Shirts</a></li>
+        <li><a href="#products">Women's T-Shirts</a></li>
         <li><a href="#products">Polo T-Shirts</a></li>
-        <li><a href="#products">Round Neck</a></li>
         <li><a href="#products">Hoodies</a></li>
-        <li><a href="#products">Jackets</a></li>
+        <li><a href="#products">Kids Apparel</a></li>
       </ul>
     </div>
     <div class="footer-links">
@@ -213,21 +313,69 @@
         <li><a href="#">Custom Design</a></li>
       </ul>
     </div>
-    <div class="footer-newsletter">
-      <h4>Get Updates</h4>
-      <p>Subscribe for new arrivals and offers.</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="Your email"/>
-        <button class="btn-primary">Subscribe</button>
-      </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p><i class="fas fa-phone"></i> +91 88305 19947</p>
+      <p><i class="fas fa-envelope"></i> info@ramsapparel.co.in</p>
+      <p><i class="fas fa-map-marker-alt"></i> Virar (West), Mumbai – 401303</p>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 UrbanThread India. All rights reserved.</p>
+    <p>© 2025 Rams Apparel. All rights reserved. | Your Style Your Signature</p>
   </div>
 </footer>
 
-<!-- ORDER MODAL: Enter Name -> WhatsApp -->
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal auth-modal">
+    <button class="modal-close" id="authModalClose"><i class="fas fa-times"></i></button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Login</button>
+      <button class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">Sign Up</button>
+    </div>
+    <div id="authLoginPanel">
+      <div class="modal-header">
+        <span class="modal-icon">👤</span>
+        <h2>Welcome Back</h2>
+        <p>Sign in to your account — it's optional but nice!</p>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="you@email.com"/></div>
+      <div class="form-group"><label>Password</label>
+        <div class="password-wrap">
+          <input type="password" id="loginPassword" placeholder="••••••••"/>
+          <button type="button" class="pwd-toggle" onclick="togglePwd('loginPassword',this)"><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+      <div class="auth-error hidden" id="loginError"></div>
+      <button class="btn-primary full-width" id="loginSubmitBtn">
+        <span id="loginBtnText">Sign In</span><span id="loginSpinner" class="spinner hidden"></span>
+      </button>
+      <p class="auth-switch">No account? <a href="#" onclick="switchAuthTab('signup')">Sign Up free</a></p>
+    </div>
+    <div id="authSignupPanel" class="hidden">
+      <div class="modal-header">
+        <span class="modal-icon">✨</span>
+        <h2>Create Account</h2>
+        <p>Join Rams Apparel — free, no obligation</p>
+      </div>
+      <div class="form-group"><label>Full Name</label><input type="text" id="signupName" placeholder="Your Name"/></div>
+      <div class="form-group"><label>Email</label><input type="email" id="signupEmail" placeholder="you@email.com"/></div>
+      <div class="form-group"><label>Password</label>
+        <div class="password-wrap">
+          <input type="password" id="signupPassword" placeholder="Min. 6 characters"/>
+          <button type="button" class="pwd-toggle" onclick="togglePwd('signupPassword',this)"><i class="fas fa-eye"></i></button>
+        </div>
+      </div>
+      <div class="auth-error hidden" id="signupError"></div>
+      <button class="btn-primary full-width" id="signupSubmitBtn">
+        <span id="signupBtnText">Create Account</span><span id="signupSpinner" class="spinner hidden"></span>
+      </button>
+      <p class="auth-switch">Already a member? <a href="#" onclick="switchAuthTab('login')">Login</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
 <div class="modal-overlay" id="orderModal">
   <div class="modal">
     <button class="modal-close" id="orderModalClose"><i class="fas fa-times"></i></button>
@@ -236,18 +384,11 @@
       <h2>Quick Order</h2>
       <p id="orderProductLabel">Enter your name to continue on WhatsApp</p>
     </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" id="orderName" placeholder="e.g. Rahul Sharma"/>
-      </div>
-      <div class="form-group">
-        <label>Quantity (optional)</label>
-        <input type="text" id="orderQty" placeholder="e.g. 50 pieces"/>
-      </div>
-      <div class="error-msg" id="orderError"></div>
-      <button class="btn-primary full-width" id="orderSubmit"><i class="fab fa-whatsapp"></i> Continue to WhatsApp</button>
-    </div>
+    <div class="form-group"><label>Your Name</label><input type="text" id="orderName" placeholder="e.g. Rahul Sharma"/></div>
+    <div class="form-group"><label>Quantity</label><input type="text" id="orderQty" placeholder="e.g. 50 pieces"/></div>
+    <div class="form-group"><label>Preferred Colour (optional)</label><input type="text" id="orderColour" placeholder="e.g. Navy Blue, Black"/></div>
+    <div class="error-msg" id="orderError"></div>
+    <button class="btn-primary full-width" id="orderSubmit"><i class="fab fa-whatsapp"></i> Continue to WhatsApp</button>
   </div>
 </div>
 
@@ -259,88 +400,231 @@
   </div>
 </div>
 
-<!-- Firebase SDK -->
+<!-- FIREBASE -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { initializeApp }    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, orderBy }
+                               from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+           signOut, onAuthStateChanged, updateProfile }
+                               from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-  // ===== PASTE YOUR FIREBASE CONFIG HERE =====
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyBXARIfzQocRpatW6lKsnDjRKeDLQh0qtA",
+    authDomain: "ramsappearl.firebaseapp.com",
+    projectId: "ramsappearl",
+    storageBucket: "ramsappearl.firebasestorage.app",
+    messagingSenderId: "973835642654",
+    appId: "1:973835642654:web:b84e35853dd0517de18b0f",
+    measurementId: "G-26WPSHZVXF"
   };
-  // ============================================
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const app  = initializeApp(firebaseConfig);
+  const db   = getFirestore(app);
+  const auth = getAuth(app);
 
-  // ===== WHATSAPP NUMBER (change this to your real number, country code + number, no + or spaces) =====
-  window.WHATSAPP_NUMBER = "919876543210"; // <-- SAMPLE NUMBER, REPLACE WITH YOURS
+  window.WHATSAPP_NUMBER = "918830519947";
 
-  // Load Products
+  // ── AUTH STATE ──────────────────────────────────────────
+  onAuthStateChanged(auth, (user) => {
+    const navLoginLi      = document.getElementById('navLoginLi');
+    const navUserLi       = document.getElementById('navUserLi');
+    const drawerAuthGuest = document.getElementById('drawerAuthGuest');
+    const drawerAuthUser  = document.getElementById('drawerAuthUser');
+
+    if (user) {
+      const name = user.displayName || user.email.split('@')[0];
+      const init = name.charAt(0).toUpperCase();
+      navLoginLi.classList.add('hidden');
+      navUserLi.classList.remove('hidden');
+      document.getElementById('navAvatar').textContent   = init;
+      document.getElementById('navUserName').textContent = name;
+      drawerAuthGuest.classList.add('hidden');
+      drawerAuthUser.classList.remove('hidden');
+      document.getElementById('drawerAvatar').textContent    = init;
+      document.getElementById('drawerUserName').textContent  = name;
+      document.getElementById('drawerUserEmail').textContent = user.email;
+    } else {
+      navLoginLi.classList.remove('hidden');
+      navUserLi.classList.add('hidden');
+      drawerAuthGuest.classList.remove('hidden');
+      drawerAuthUser.classList.add('hidden');
+    }
+  });
+
+  window.openAuthModal = (tab) => {
+    window.switchAuthTab(tab || 'login');
+    document.getElementById('authModal').classList.add('active');
+  };
+  document.getElementById('navLoginBtn').addEventListener('click', () => window.openAuthModal('login'));
+  document.getElementById('drawerLoginBtn').addEventListener('click', () => window.openAuthModal('login'));
+
+  document.getElementById('loginSubmitBtn').addEventListener('click', async () => {
+    const email = document.getElementById('loginEmail').value.trim();
+    const pass  = document.getElementById('loginPassword').value;
+    const err   = document.getElementById('loginError');
+    err.classList.add('hidden');
+    toggleBtn('loginBtnText','loginSpinner',true);
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      document.getElementById('authModal').classList.remove('active');
+    } catch(e) {
+      err.textContent = friendlyErr(e.code); err.classList.remove('hidden');
+    } finally { toggleBtn('loginBtnText','loginSpinner',false); }
+  });
+
+  document.getElementById('signupSubmitBtn').addEventListener('click', async () => {
+    const name  = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const pass  = document.getElementById('signupPassword').value;
+    const err   = document.getElementById('signupError');
+    err.classList.add('hidden');
+    if (!name) { err.textContent='Enter your name.'; err.classList.remove('hidden'); return; }
+    toggleBtn('signupBtnText','signupSpinner',true);
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, pass);
+      await updateProfile(cred.user, { displayName: name });
+      document.getElementById('authModal').classList.remove('active');
+    } catch(e) {
+      err.textContent = friendlyErr(e.code); err.classList.remove('hidden');
+    } finally { toggleBtn('signupBtnText','signupSpinner',false); }
+  });
+
+  ['navLogoutBtn','drawerLogoutBtn'].forEach(id => {
+    document.getElementById(id)?.addEventListener('click', () => signOut(auth));
+  });
+
+  function toggleBtn(txtId, spinnerId, loading) {
+    document.getElementById(txtId).classList.toggle('hidden', loading);
+    document.getElementById(spinnerId).classList.toggle('hidden', !loading);
+  }
+  function friendlyErr(code) {
+    return ({ 'auth/invalid-email':'Invalid email address.','auth/user-not-found':'No account with this email.',
+      'auth/wrong-password':'Wrong password.','auth/invalid-credential':'Incorrect email or password.',
+      'auth/email-already-in-use':'Email already registered. Login instead.',
+      'auth/weak-password':'Password must be 6+ characters.',
+      'auth/too-many-requests':'Too many attempts. Try again later.' })[code] || 'Something went wrong.';
+  }
+
+  [['loginEmail','loginPassword'],['signupName','signupEmail','signupPassword']].forEach((fields,i) => {
+    const btn = document.getElementById(i===0?'loginSubmitBtn':'signupSubmitBtn');
+    fields.forEach(f => document.getElementById(f)?.addEventListener('keydown', e => { if(e.key==='Enter') btn.click(); }));
+  });
+
+  // ── PRODUCTS ────────────────────────────────────────────
   async function loadProducts() {
     const grid = document.getElementById('productsGrid');
     try {
-      const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+      const q    = query(collection(db,'products'), orderBy('createdAt','desc'));
       const snap = await getDocs(q);
       if (snap.empty) {
-        grid.innerHTML = `<div class="no-products"><p>👕 Products coming soon! Check back later.</p></div>`;
+        grid.innerHTML = `<div class="no-products"><p>Products coming soon — check back shortly.</p></div>`;
         return;
       }
       const products = [];
-      snap.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+      snap.forEach(d => products.push({ id: d.id, ...d.data() }));
       window.allProductsData = products;
       renderProducts(products);
-    } catch (e) {
-      grid.innerHTML = `<div class="no-products"><p>⚠️ Could not load products. Please configure Firebase.</p></div>`;
+    } catch(e) {
+      // Fallback to static catalogue if Firebase not yet connected
+      renderStaticProducts();
     }
   }
 
+  // ── RENDER PRODUCTS (FIXED — uses <img> tag for Firebase images) ──
   function renderProducts(products) {
     const grid = document.getElementById('productsGrid');
     grid.innerHTML = '';
+
     products.forEach(p => {
       const card = document.createElement('div');
       card.className = 'product-card';
       card.dataset.category = p.category || 'all';
+
+      // Use real <img> tag so Firebase Storage URLs load correctly
+      const imgSection = p.imageUrl
+        ? `<img
+              src="${p.imageUrl}"
+              alt="${p.name}"
+              class="product-card-img"
+              loading="lazy"
+              onerror="this.style.display='none';this.parentElement.querySelector('.product-placeholder').style.display='flex'"
+           />
+           <span class="product-placeholder" style="display:none">👕</span>`
+        : `<span class="product-placeholder">👕</span>`;
+
       card.innerHTML = `
-        <div class="product-img" style="background-image:url('${p.imageUrl || ''}')">
-          ${!p.imageUrl ? '<span class="product-placeholder">👕</span>' : ''}
-          <span class="product-tag">${(p.category || 'tshirt').replace('-', ' ')}</span>
+        <div class="product-img-wrap">
+          ${imgSection}
+          <span class="product-tag">${(p.category || 'apparel').replace('-', ' ')}</span>
         </div>
         <div class="product-info">
           <h3>${p.name}</h3>
-          <p>${p.description ? p.description.substring(0,80) + '...' : ''}</p>
+          <p>${p.description ? p.description.substring(0, 90) + '...' : ''}</p>
+          ${p.gsm ? `<div class="product-meta"><i class="fas fa-layer-group"></i> GSM ${p.gsm}</div>` : ''}
           <div class="product-footer">
             <span class="product-price">${p.price ? '₹' + p.price + '/pc' : 'Get Quote'}</span>
             <div style="display:flex;gap:8px;">
-              <button class="btn-view" onclick='openProductModal(${JSON.stringify(p)})'>View</button>
-              <button class="btn-view" style="background:#25D366" onclick='openOrderModal(${JSON.stringify(p.name)})'><i class="fab fa-whatsapp"></i></button>
+              <button class="btn-view" onclick='openProductModal(${JSON.stringify(p)})'>Details</button>
+              <button class="btn-view whatsapp-btn" onclick='openOrderModal(${JSON.stringify(p.name)})'><i class="fab fa-whatsapp"></i></button>
             </div>
           </div>
         </div>`;
+
       grid.appendChild(card);
     });
+
     setupFilters();
   }
 
+  // Static fallback catalogue
+  function renderStaticProducts() {
+    const products = [
+      {id:'1',name:"Men's Round Neck T-Shirt",category:'mens',description:'100% Cotton, GSM 160/175-185/220. Round Neck. DTF, Vinyl & Screen Printing. Sizes S–4XL. 22 colours available.',price:'',gsm:'160–220'},
+      {id:'2',name:"Women's Round Neck T-Shirt",category:'womens',description:'100% Cotton, GSM 180. Round Neck. DTF, Vinyl & Screen Printing. Sizes S–2XL. 11 colours available.',price:'',gsm:'180'},
+      {id:'3',name:"Men's Oversized T-Shirt",category:'mens',description:'100% Cotton, GSM 180–260. Round Neck. DTF, Vinyl & Screen Printing. Sizes S–4XL. 7 colours available.',price:'',gsm:'180–260'},
+      {id:'4',name:"Polo T-Shirt",category:'polo',description:'100% Matty Cotton, GSM 195. Polo Neck. DTF, Vinyl & Screen Printing. Sizes S–4XL. Multiple colours.',price:'',gsm:'195'},
+      {id:'5',name:"Double Tipping Polo T-Shirt",category:'polo',description:'100% Cotton, GSM 220. Double Tipping Collar. DTF, Vinyl & Screen Printing. Sizes S–4XL. 15 colours.',price:'',gsm:'220'},
+      {id:'6',name:"Tipping Polo T-Shirt",category:'polo',description:'100% Cotton, GSM 250. Single Tipping Collar. DTF, Vinyl & Screen Printing. Sizes S–4XL. Multiple colours.',price:'',gsm:'250'},
+      {id:'7',name:"Women's Crop Top",category:'womens',description:'100% Cotton, GSM 175–185. Round Neck. DTF, Vinyl & Screen Printing. Sizes S–2XL. 17 colours available.',price:'',gsm:'175–185'},
+      {id:'8',name:"Women's T-Shirt Dress (¾ Sleeve)",category:'womens',description:'100% Cotton, GSM 175–185. Round Neck. DTF, Vinyl & Screen Printing. Sizes S–2XL. 12 colours.',price:'',gsm:'175–185'},
+      {id:'9',name:"Kids Round Neck T-Shirt",category:'kids',description:'100% Cotton, GSM 175–185. Round Neck. DTF, Vinyl & Screen Printing. Age 0–14 years. 6 colours.',price:'',gsm:'175–185'},
+      {id:'10',name:"Unisex Half Sleeve T-Shirt",category:'mens',description:'100% Cotton, GSM 220. Round Neck. DTF, Vinyl & Screen Printing. Sizes S–4XL. 6 colours available.',price:'',gsm:'220'},
+      {id:'11',name:"Zipper Hoodie",category:'hoodies',description:'100% Cotton, GSM 280. DTF, Vinyl & Screen Printing. Sizes S–4XL. Multiple colours available.',price:'',gsm:'280'},
+      {id:'12',name:"Kids Pullover Hoodie",category:'kids',description:'100% Cotton Poly Fabric, GSM 235. DTF, Vinyl & Screen Printing. Sizes S–4XL. 5 colours available.',price:'',gsm:'235'},
+    ];
+    renderProducts(products);
+  }
+
+  // ── PRODUCT DETAIL MODAL (FIXED — shows image + all fields) ──
   window.openProductModal = function(p) {
     const content = document.getElementById('productModalContent');
+
+    const imgHtml = p.imageUrl
+      ? `<img
+            src="${p.imageUrl}"
+            alt="${p.name}"
+            class="pm-img-actual"
+            onerror="this.parentElement.innerHTML='<div class=\\'pm-img-placeholder\\'>👕</div>'"
+         />`
+      : `<div class="pm-img-placeholder">👕</div>`;
+
     content.innerHTML = `
-      <div class="pm-img" style="background-image:url('${p.imageUrl || ''}')">
-        ${!p.imageUrl ? '<span style="font-size:5rem">👕</span>' : ''}
-      </div>
+      <div class="pm-img-wrap">${imgHtml}</div>
       <div class="pm-details">
-        <span class="product-tag">${(p.category || 'tshirt').replace('-', ' ')}</span>
+        <span class="product-tag">${(p.category || 'apparel').replace('-', ' ')}</span>
         <h2>${p.name}</h2>
         <p>${p.description || ''}</p>
+        <div class="pm-meta-list">
+          ${p.gsm   ? `<div class="pm-meta-row"><i class="fas fa-layer-group"></i><span>GSM: <strong>${p.gsm}</strong></span></div>` : ''}
+          ${p.stock ? `<div class="pm-meta-row"><i class="fas fa-boxes-stacked"></i><span>Min Order: <strong>${p.stock}</strong></span></div>` : ''}
+        </div>
         ${p.price ? `<div class="pm-price">₹${p.price} <span>/piece</span></div>` : ''}
-        <button class="btn-primary" onclick='document.getElementById("productModal").classList.remove("active"); openOrderModal(${JSON.stringify(p.name)})'><i class="fab fa-whatsapp"></i> Order This on WhatsApp</button>
+        <button class="btn-primary" onclick='document.getElementById("productModal").classList.remove("active"); openOrderModal(${JSON.stringify(p.name)})'>
+          <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </button>
       </div>`;
+
     document.getElementById('productModal').classList.add('active');
   };
 
