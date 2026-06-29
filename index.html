@@ -542,9 +542,9 @@
       card.dataset.category = p.category || 'all';
 
       // Use real <img> tag so Firebase Storage URLs load correctly
-      const imgSection = p.imageUrl
+      const imgSection = p.image
         ? `<img
-              src="${p.imageUrl}"
+              src="${p.image}"
               alt="${p.name}"
               class="product-card-img"
               loading="lazy"
@@ -600,9 +600,9 @@
   window.openProductModal = function(p) {
     const content = document.getElementById('productModalContent');
 
-    const imgHtml = p.imageUrl
+    const imgHtml = p.image
       ? `<img
-            src="${p.imageUrl}"
+            src="${p.image}"
             alt="${p.name}"
             class="pm-img-actual"
             onerror="this.parentElement.innerHTML='<div class=\\'pm-img-placeholder\\'>👕</div>'"
