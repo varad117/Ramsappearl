@@ -48,6 +48,69 @@ input,select,textarea,button{font-family:inherit;}
 .logo-mark sub{font-size:0.55rem;vertical-align:sub;}
 .large-mark{width:80px;height:80px;font-size:1.6rem;}
 
+/* ===== LOGO IMAGE ===== */
+
+.logo-img{
+    width:52px;
+    height:52px;
+    object-fit:contain;
+    display:block;
+    flex-shrink:0;
+}
+
+.drawer-logo{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    display:block;
+}
+
+.about-logo{
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    display:block;
+    margin:auto;
+}
+
+.footer-logo{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+    display:block;
+}
+
+/* Better alignment */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-text-wrap{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.drawer-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+@media(max-width:768px){
+    .logo-img{
+        width:46px;
+        height:46px;
+    }
+
+    .about-logo{
+        width:110px;
+        height:110px;
+    }
+}
+
 /* NAVBAR */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 24px;height:72px;background:rgba(17,17,17,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,169,110,0.2);transition:var(--transition);}
 .navbar.scrolled{height:62px;box-shadow:0 4px 20px rgba(0,0,0,0.4);}
